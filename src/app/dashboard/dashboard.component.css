@@ -1,0 +1,21 @@
+.main-container{
+  color: var(--textColor);
+  display: grid;
+  grid-template-columns: min-content auto;
+  height: 100%;
+}
+
+.features-container{
+  display: flex;
+  flex-direction: column;
+  background-color:#0001;
+}
+
+main{
+  height: 100%;
+}
+
+hr{
+  width: 97%;
+  opacity: 0.1;
+}

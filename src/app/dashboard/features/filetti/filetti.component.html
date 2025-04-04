@@ -1,0 +1,50 @@
+<div class="container">
+
+  @if (!inputed) {
+    <div class="input-box">
+
+      <h4>Selezionare tipo del filetto</h4>
+  
+      <div class="filetti-option-container" >
+        <label>frontale</label>
+        <input name="option" type="radio" [(ngModel)]= "tipo" value="frontale">
+        <label>radiale</label>
+        <input name="option"  type="radio" [(ngModel)]= "tipo" value="radiale">
+      </div>
+  
+      <div class="input-container">
+        <label>Diametro tampone</label>
+        <input [(ngModel)]= "tampone" type="number" min="0">
+        <label>Diametro fresa</label>
+        <input [(ngModel)]= "fresa" type="number" min="0">
+        <label>Passo</label>
+        <input [(ngModel)]= "passo" type="number" min="0">
+      </div>
+  
+      <button (click)= "genera()">Genera</button>
+      
+    </div>
+  }
+  @else if (inputed) {
+
+    <div class="radiale-generated" *ngIf= "tipo == 'radiale'">
+      <textarea name="" id="">
+        G0 G19 X(partenza) M7;
+        G1 X(profondita) F(avanzamento);
+        G1 G41 G91 W-{{w}} V{{v}} F(avanzamento);
+        G3 W{{w}} V{{w}} U{{u/2}} R{{w}};
+        G3 J-{{j}} U{{u}};
+        G3 W{{w}} V-{{w}} U{{u/2}} R{{w}} F(avanzamento);
+        G1 G40 W-{{w}} V-{{v}};
+        G0 G90 G18 X(uscita);
+      </textarea>
+    </div>
+   
+    <div class="frontale-generated" *ngIf= "tipo == 'frontale'">
+      <p>devo ancora fare cazzo</p>
+    </div>
+  }
+
+    
+
+</div>
