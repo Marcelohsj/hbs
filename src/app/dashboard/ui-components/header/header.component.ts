@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
+import { SharedDataService } from '../../../service/shared-data.service';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +9,17 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  featureActived:any = "";
+  
+  constructor(private sharedData : SharedDataService){
+    effect(() => {
+      this.featureActived = this.sharedData.linkActive();
+    });
+  }
+  
+
+
+     
+  
+  
 }

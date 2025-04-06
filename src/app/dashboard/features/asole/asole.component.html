@@ -1,1 +1,47 @@
-<p>asole works!</p>
+<div class="container">
+
+  @if (!inputed) {
+
+    <div class="input-box">
+      <h4>asola</h4>
+
+      <div class="input-container">
+        <label for="">Larghezza Asola</label>
+        <input type="number" [(ngModel)]= "larghezza">
+        <label for="">Lunghezza Asola</label>
+        <input type="number" [(ngModel)]= "lunghezza">
+        <label for="">Diametro Fresa</label>
+        <input type="number" [(ngModel)]= "fresa">
+        <label for="">Profondita</label>
+        <input type="number" [(ngModel)]= "profondita">
+        <label for="">Numero Passate</label>
+        <input type="number" [(ngModel)]= "passate">
+        <label for="">Raggio Asola</label>
+        <input type="number" [(ngModel)]= "r">
+      </div>
+
+      <button (click)= "genera()">Genera</button>
+
+      <p class="message">{{errorMessage}}</p>
+    </div>
+  }
+  
+  @else{
+      <textarea >
+        G19;
+        G0 X(partenza);
+        G1 U-{{u}}
+        G1 V-{{v}} F(avanzamento);
+        G1 W{{w}}
+        G3 V{{v*2}} R{{r}}
+        G1 W-{{w*2}}
+        G3 V-{{v*2}} R{{r}}
+        G1 W{{w}}
+        G1 V{{v}} F(avanzamento);
+        G0 X(uscita);
+        G18;
+      </textarea>
+  }
+  
+</div>
+

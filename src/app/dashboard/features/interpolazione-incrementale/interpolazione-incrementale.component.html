@@ -1,1 +1,37 @@
-<p>interpolazione-incrementale works!</p>
+<div class="container">
+
+  @if (!inputed) {
+
+    <div class="input-box">
+      <h4>interpolazione incrementale</h4>
+
+      <div class="input-container">
+        <label for="">Diametro Foro</label>
+        <input type="number" [(ngModel)]= "foro">
+        <label for="">Diametro Fresa</label>
+        <input type="number" [(ngModel)]= "fresa">
+        <label for="">Profondita</label>
+        <input type="number" [(ngModel)]= "profondita">
+      </div>
+
+      <button (click)= "genera()">Genera</button>
+
+      <p class="message">{{errorMessage}}</p>
+    </div>
+  }
+  
+  @else{
+      <textarea>
+        G19;
+        G0 X(partenza);
+        G1 Y-{{y}} F(avanzamento);
+        G3 J{{j}} U-{{u}};
+        G3 J{{j}};
+        G1 Y0;
+        G0 X(uscita);
+        G18;
+      </textarea>
+  }
+  
+</div>
+

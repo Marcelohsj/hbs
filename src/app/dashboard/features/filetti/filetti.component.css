@@ -72,9 +72,14 @@ textarea{
   border-radius: 20px;
   border: solid 1px #fff1;
   padding-top: 20px;
+  max-height: 500px;
 }
 
 .radio-generated{
   display: flex;
   justify-content: center;
+}
+
+.message{
+  align-self: center;
 }

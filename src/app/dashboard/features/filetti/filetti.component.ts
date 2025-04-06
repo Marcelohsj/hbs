@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class FilettiComponent {
 
+  errorMessage:string = "";
+
   inputed:boolean = false;
   tipo:string = "";
   tampone:number = 0;
@@ -24,14 +26,20 @@ export class FilettiComponent {
 
 
   genera(){
-    this.inputed = true;
+    
+    if(this.tipo == ""){
+      this.errorMessage = "Inserire tipo del filetto!"
+    }
+    else{
+      this.inputed = true;
 
-    this.j = (this.tampone/2);
-    this.w = Math.abs(this.j - (this.passo/2) - 0.5);
-    this.v = Math.abs(this.j - this.w);
-    this.u = (this.passo*2);
-
-
+      this.j = (this.tampone/2);
+      this.w = Math.abs(this.j - (this.passo/2) - 0.5);
+      this.v = Math.abs(this.j - this.w);
+      this.u = (this.passo*2);
+    }
   }
+
+
 
 }
